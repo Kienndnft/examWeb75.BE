@@ -7,9 +7,9 @@ const MovieSchema = new Schema(
     //id: { type: String, required: true },
     name: { type: String, required: true },
     year: { type: Number, required: true },
-    time: { type: Number },
-    image: { type: String },
-    introduce: { type: String },
+    time: { type: Number, required: true },
+    image: { type: String, required: true },
+    introduce: { type: String, required: true },
   },
   { timestamps: true } // This will add createdAt and updatedAt columns
 );
