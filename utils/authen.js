@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken';
 
 export const authen = async (req, res, next) => {
   //Xac thuc token
-
   if (!req.headers?.authorization) throw new Error('Authentication failed');
   console.log(req.headers?.authorization);
 
@@ -12,7 +11,7 @@ export const authen = async (req, res, next) => {
   if (!payload) throw new Error('Authentication failed');
 
   //gan user vao request
-  req.user = payload;
+  //req.user = payload;
 
   next();
 };

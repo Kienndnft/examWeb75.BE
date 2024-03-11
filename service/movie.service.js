@@ -1,12 +1,24 @@
 import { MovieModel } from '../model/movie.model.js';
 
-//=========================================
+//Find all=========================================
 export const getMovies = async (req, res, next) => {
-  const { query } = req.query;
-
-  const movies = await MovieModel.find({ query });
+  //const { query } = req;
+  const movies = await MovieModel.find({});
 
   res.status(200).send({ data: movies, message: 'Get movies', success: true });
+};
+//Find by name=========================================
+export const getMoviesbyName = async (req, res, next) => {
+  const { text } = req.params;
+
+  const movies = await MovieModel.find({ name: { $regex: text, $options: 'i' } });
+
+  res.status(200).send({ data: movies, message: 'Get movies by name', success: true });
+};
+//Sort movie by year=========================================
+export const getMoviesSorted = async (req, res, next) => {
+  const movies = await MovieModel.find({}).sort({ year: 1 });
+  res.status(200).send({ data: movies, message: 'Get movies sorted by year', success: true });
 };
 
 //=========================================
