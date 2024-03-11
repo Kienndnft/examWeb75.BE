@@ -4,11 +4,14 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { authController } from './controller/auth.controller.js';
 import { movieController } from './controller/movie.controller.js';
+import cors from 'cors';
 
 //reads the contents of the .env file in the root of your project and loads the variables into process.env
 dotenv.config();
 
 const server = express();
+
+server.use(cors());
 
 server.use(express.json());
 server.use(morgan('combined'));
